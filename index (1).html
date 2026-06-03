@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h1 class="mb-4">Cadastro de Alunos</h1>
+
+<a href="/cadastrar" class="btn btn-success mb-3">
+    Novo Aluno
+</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Curso</th>
+            <th>E-mail</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    {% for aluno in alunos %}
+        <tr>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.idade }}</td>
+            <td>{{ aluno.curso }}</td>
+            <td>{{ aluno.email }}</td>
+
+            <td>
+                <a href="/editar/{{ loop.index0 }}"
+                   class="btn btn-warning btn-sm">
+                   Editar
+                </a>
+
+                <a href="/excluir/{{ loop.index0 }}"
+                   class="btn btn-danger btn-sm">
+                   Excluir
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
