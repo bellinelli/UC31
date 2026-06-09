@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Preferências do Usuário</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="{{ tema }}">
+
+    <h1>Projeto Flask com Cookies</h1>
+
+    {% if nome %}
+        <h2>Olá, {{ nome }}! Seja bem-vindo novamente.</h2>
+    {% else %}
+        <h2>Bem-vindo visitante!</h2>
+    {% endif %}
+
+    <hr>
+
+    <h3>Informe seu nome</h3>
+
+    <form action="/salvar_nome" method="POST">
+        <input type="text" name="nome" placeholder="Digite seu nome" required>
+        <button type="submit">Salvar</button>
+    </form>
+
+    <hr>
+
+    <h3>Escolha o tema</h3>
+
+    <a href="/alterar_tema/claro">
+        <button>Tema Claro</button>
+    </a>
+
+    <a href="/alterar_tema/escuro">
+        <button>Tema Escuro</button>
+    </a>
+
+</body>
+</html>
