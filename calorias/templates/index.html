@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Contador de Calorias</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .btn-zerar {
+            color: #dc3545;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Calorias do Dia</h1>
+    <h2>Total: {{ total }} kcal</h2>
+
+    <form action="{{ url_for('adicionar') }}" method="POST">
+        <input type="text" name="nome" placeholder="O que comeu?" required>
+        <input type="number" name="calorias" placeholder="Calorias" required>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <h3>Alimentos consumidos:</h3>
+    <ul>
+        {% for item in alimentos %}
+            <li>{{ item.nome }} - {{ item.calorias }} kcal</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('zerar') }}" class="btn-zerar">Zerar tudo</a>
+
+</body>
+</html>
